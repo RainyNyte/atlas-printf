@@ -5,12 +5,17 @@
 
 int _printf(const char *format, ...)
 {
-	size_t i = 0, len = strlen(format);
-	char strarray[len + 1];
+	size_t i, len = strlen(format);
+       char *strarray;
 
-	for (i; i < len; i++)
-	{
-		strarray[i] = format[i];
-		_putchar(strarray[i]);
-	}
+       strarray = malloc(sizeof(char) * (len + 1));
+
+       for (i = 0; i < len; i++)
+       {
+	       strarray[i] = format[i];
+	       _putchar(strarray[i]);
+       }
+
+       free(strarray);
+       return (len);
 }
