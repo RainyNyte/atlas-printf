@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			i++;
-			specifier = strarray[i];
+			specifier = format[i];
 			printf("%c\n", specifier);
 
 			if (specifier == 's')
