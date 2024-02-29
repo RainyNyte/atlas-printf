@@ -17,6 +17,9 @@ int main(void)
 	len2 = printf("Let's try to printf a simple sentence.\n");
 	printf("printf returns: %d\n", len2);
 
+	_printf("%c");
+	_printf("%s");
+
 /**
 ====Currently Unimplemented WIP====
    unsigned int ui;
