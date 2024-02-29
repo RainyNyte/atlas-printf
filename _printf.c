@@ -1,16 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
 #include "_printf.h"
 
 int _printf(const char *format, ...)
 {
 	size_t i, len = strlen(format);
-	char *strarray;
-	struct spec spec;
-	char specifier;
+       char *strarray;
+       char specifier;
+       int tmp;
+       char *tmps;
+       va_list args;
 
 	strarray = malloc(sizeof(char) * (len + 1));
+
+	va_start(args, format);
 
 	for (i = 0; i < len; i++)
 	{
@@ -23,15 +28,20 @@ int _printf(const char *format, ...)
 		{
 			i++;
 			specifier = format[i];
-			printf("%c\n", specifier);
 
 			if (specifier == 's')
 			{
-				printf("this is a string"); /*check to see if the format detection is working*/
+				tmps = va_arg(args, char*);
+				while (*tmps)
+				{
+					_putchar(*tmps);
+					tmps++;
+				}
 			}
 			if (specifier == 'c')
 			{
-				printf("this is a characrer"); /*check to see if the format detection is working*/
+				tmp = va_arg(args, int);
+				_putchar(tmp);
 			}
 
 

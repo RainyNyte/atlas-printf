@@ -11,14 +11,18 @@ int main(void)
 {
 	int len;
 	int len2;
+	char c;
+	char *s;
 
 	len = _printf("Let's try to printf a simple sentence.\n");
 	printf("_printf returns: %d\n", len);
 	len2 = printf("Let's try to printf a simple sentence.\n");
 	printf("printf returns: %d\n", len2);
 
-	_printf("%c");
-	_printf("%s");
+	c = 'C';
+	_printf("this is a character: %c\n", c);
+	s = "this is a string";
+	_printf("what's this: %s\n", s);
 
 /**
 ====Currently Unimplemented WIP====
