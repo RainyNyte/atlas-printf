@@ -8,6 +8,7 @@ int _printf(const char *format, ...)
 	size_t i, len = strlen(format);
 	char *strarray;
 	struct spec spec;
+	char specifier;
 
 	strarray = malloc(sizeof(char) * (len + 1));
 
@@ -20,14 +21,17 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			spec.specifier = strarray[i+1];
-			if (spec.specifier == 's')
+			i++;
+			specifier = strarray[i];
+			printf("%c\n", specifier);
+
+			if (specifier == 's')
 			{
-				printf("this is a string\n"); /*check to see if the format detection is working*/
+				printf("this is a string"); /*check to see if the format detection is working*/
 			}
-			if (spec.specifier == 'c')
+			if (specifier == 'c')
 			{
-				printf("this is a characrer\n"); /*check to see if the format detection is working*/
+				printf("this is a characrer"); /*check to see if the format detection is working*/
 			}
 
 
