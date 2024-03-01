@@ -4,6 +4,13 @@
 #include <stdarg.h>
 #include "main.h"
 
+/**
+ *_printf- simplified recreation of the standard library printf function
+ *@format: the string to be printed
+*
+*Return: length of the string printed, or -1 if no valid string is supplied
+*/
+
 int _printf(const char *format, ...)
 {
 	size_t i, final = 0, len = strlen(format);
@@ -35,7 +42,7 @@ int _printf(const char *format, ...)
 				if (tmps == NULL)
 				{
 					_printf("(null)");
-					final +=6;
+					final += 6;
 				}
 				else
 				{
@@ -60,7 +67,7 @@ int _printf(const char *format, ...)
 			}
 			else if (specifier == '\0')
 			{
-				return(-1);
+				return (-1);
 			}
 			else
 			{
@@ -74,6 +81,5 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(args);
-	free(strarray);
 	return (final);
 }
