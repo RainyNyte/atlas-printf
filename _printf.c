@@ -47,18 +47,18 @@ int _printf(const char *format, ...)
 					}
 				}
 			}
-			if (specifier == 'c')
+			else if (specifier == 'c')
 			{
 				tmp = va_arg(args, int);
 				_putchar(tmp);
 				final++;
 			}
-			if (specifier == '%')
+			else if (specifier == '%')
 			{
 				_putchar('%');
 				final++;
 			}
-			if (specifier == '\0')
+			else if (specifier == '\0')
 			{
 				return(-1);
 			}
