@@ -19,10 +19,16 @@ int main(void)
 	len2 = printf("Let's try to printf a simple sentence.\n");
 	printf("printf returns: %d\n", len2);
 
+	len = _printf("%c", 'S');
+	printf(" | _printf returns: %d\n", len);
+	len2 = printf("%c", 'S');
+	printf(" | printf returns: %d\n", len2);
+	
 	c = 'C';
 	_printf("this is a character: %c\n", c);
 	s = "this is a string";
 	_printf("what's this: %s\n", s);
+	_printf("this is a percent sign: %%\n");
 
 /**
 ====Currently Unimplemented WIP====

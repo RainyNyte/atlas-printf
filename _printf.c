@@ -6,7 +6,7 @@
 
 int _printf(const char *format, ...)
 {
-	size_t i, len = strlen(format);
+	size_t i, final = 0, len = strlen(format);
        char *strarray;
        char specifier;
        int tmp;
@@ -23,6 +23,7 @@ int _printf(const char *format, ...)
 		if (strarray[i] != '%')
 		{
 			_putchar(strarray[i]);
+			final++;
 		}
 		else
 		{
@@ -36,12 +37,19 @@ int _printf(const char *format, ...)
 				{
 					_putchar(*tmps);
 					tmps++;
+					final++;
 				}
 			}
 			if (specifier == 'c')
 			{
 				tmp = va_arg(args, int);
 				_putchar(tmp);
+				final++;
+			}
+			if (specifier == '%')
+			{
+				_putchar('%');
+				final++;
 			}
 
 
@@ -49,6 +57,7 @@ int _printf(const char *format, ...)
 
 	}
 
+	va_end(args);
 	free(strarray);
-	return (len);
+	return (final);
 }
