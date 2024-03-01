@@ -20,10 +20,25 @@ int main(void)
 	printf("printf returns: %d\n", len2);
 
 	len = _printf("%c", 'S');
-	printf(" | _printf returns: %d\n", len);
+	printf(" | _printf(\"%%c\") returns: %d\n", len);
 	len2 = printf("%c", 'S');
-	printf(" | printf returns: %d\n", len2);
-	
+	printf(" | printf(\"%%c\") returns: %d\n", len2);
+
+	len = _printf("%");
+	printf(" | _printf(\"%\") returns: %d\n", len);
+	len2  = printf("%");
+	printf(" | printf(\"%\") returns: %d\n", len2);
+
+	len = _printf("%!\n");
+	printf("_printf(\"%!\\n\") returns: %d\n", len);
+	len2  = printf("%!\n");
+	printf(" | printf(\"%!\\n\") returns: %d\n", len2);
+
+	len = _printf("%K\n");
+	printf("_printf(\"%K\\n\") returns: %d\n", len);
+	len2  = printf("%K\n");
+	printf("printf(\"%K\\n\") returns: %d\n", len2);
+
 	c = 'C';
 	_printf("this is a character: %c\n", c);
 	s = "this is a string";

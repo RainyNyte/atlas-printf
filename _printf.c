@@ -8,7 +8,7 @@ int _printf(const char *format, ...)
 {
 	size_t i, final = 0, len = strlen(format);
 	char *strarray, *tmps;
-	char specifier;
+	char specifier = '\0';
 	int tmp;
 	va_list args;
 
@@ -58,7 +58,16 @@ int _printf(const char *format, ...)
 				_putchar('%');
 				final++;
 			}
-
+			if (specifier == '\0')
+			{
+				return(-1);
+			}
+			else
+			{
+				_putchar('%');
+				_putchar(specifier);
+				final += 2;
+			}
 
 		}
 
