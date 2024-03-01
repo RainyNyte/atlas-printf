@@ -7,11 +7,10 @@
 int _printf(const char *format, ...)
 {
 	size_t i, final = 0, len = strlen(format);
-       char *strarray;
-       char specifier;
-       int tmp;
-       char *tmps;
-       va_list args;
+	char *strarray, *tmps;
+	char specifier;
+	int tmp;
+	va_list args;
 
 	strarray = malloc(sizeof(char) * (len + 1));
 
@@ -33,11 +32,19 @@ int _printf(const char *format, ...)
 			if (specifier == 's')
 			{
 				tmps = va_arg(args, char*);
-				while (*tmps)
+				if (tmps == NULL)
 				{
-					_putchar(*tmps);
-					tmps++;
-					final++;
+					_printf("(null)");
+					final +=6;
+				}
+				else
+				{
+					while (*tmps)
+					{
+						_putchar(*tmps);
+						tmps++;
+						final++;
+					}
 				}
 			}
 			if (specifier == 'c')

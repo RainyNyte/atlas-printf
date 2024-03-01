@@ -29,6 +29,7 @@ int main(void)
 	s = "this is a string";
 	_printf("what's this: %s\n", s);
 	_printf("this is a percent sign: %%\n");
+	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
 
 /**
 ====Currently Unimplemented WIP====
