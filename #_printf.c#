@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			i++;
 			specifier = format[i];
 
-			IdentifySpecifier(specifier, args, &final);
+			IdentifySpecifier(specifier, args, final);
 		}
 
 	}
@@ -54,13 +54,13 @@ int _printf(const char *format, ...)
  * Return: Always 0 (success)
  */
 
-int *String(va_list args, int *final)
+void String(va_list args, size final)
 {
 	char *tmps = va_arg(args, char*);
 	if (tmps == NULL)
 	{
 		_printf("(null)");
-		(*final) += 6;
+		final += 6;
 	}
 	else
 	{
@@ -68,7 +68,7 @@ int *String(va_list args, int *final)
 		{
 			_putchar(*tmps);
 			tmps++;
-			(*final)++;
+			final++;
 		}
 	}
 	return(final);
@@ -83,35 +83,30 @@ int *String(va_list args, int *final)
  * Return: 0 on success, non-zero on error
  */
 
-int *IdentifySpecifier(char specifier, va_list args, int *final)
+int IdentifySpecifier(char specifier, va_list args, int final)
 {
 	int tmp;
 
 	if (specifier == 's')
-	{
 		String(args, final);
-	}
 	else if (specifier == 'c')
 	{
 		tmp = va_arg(args, int);
 		_putchar(tmp);
-		(*final)++;
+		(final)++;
 	}
 	else if (specifier == '%')
 	{
 		_putchar('%');
-		(*final)++;
+		(final)++;
 	}
 	else if (specifier == '\0')
-	{
-		*final = -1;
-		return (final);
-	}
+		return (-1);
 	else
 	{
 		_putchar('%');
 		_putchar(specifier);
-		(*final) += 2;
+		(final) += 2;
 	}
 	return (final);
 }
