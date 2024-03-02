@@ -19,7 +19,11 @@ int _printf(const char *format, ...)
 	char specifier = '\0';
 	va_list args;
 
+	if (format == NULL)
+		return (-1);
 	strarray = malloc(sizeof(char) * (len + 1));
+	if (strarray == NULL)
+		return (-1)
 
 	va_start(args, format);
 
@@ -57,6 +61,7 @@ int _printf(const char *format, ...)
 int *String(va_list args, int *final)
 {
 	char *tmps = va_arg(args, char*);
+
 	if (tmps == NULL)
 	{
 		_printf("(null)");
@@ -71,7 +76,7 @@ int *String(va_list args, int *final)
 			(*final)++;
 		}
 	}
-	return(final);
+	return (final);
 }
 
 /**
