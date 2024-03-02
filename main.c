@@ -45,6 +45,9 @@ int main(void)
 	_printf("what's this: %s\n", s);
 	_printf("this is a percent sign: %%\n");
 	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	_printf("Length:[%d, %i]\n", len, len);
+	_printf("Negative:[%d]\n", -762534);
+
 
 /**
 ====Currently Unimplemented WIP====

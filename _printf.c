@@ -93,15 +93,15 @@ int *IdentifySpecifier(char specifier, va_list args, int *final)
 	int tmp;
 
 	if (specifier == 's')
-	{
 		String(args, final);
-	}
 	else if (specifier == 'c')
 	{
 		tmp = va_arg(args, int);
 		_putchar(tmp);
 		(*final)++;
 	}
+	else if (specifier == 'd' || specifier == 'i')
+		Integer(args, final);
 	else if (specifier == '%')
 	{
 		_putchar('%');
@@ -118,5 +118,36 @@ int *IdentifySpecifier(char specifier, va_list args, int *final)
 		_putchar(specifier);
 		(*final) += 2;
 	}
+	return (final);
+}
+/**
+ * Integer - Print an integer
+ * @args: Variable argument list
+ * @final: Pointer to the counter for characters printed
+ *
+ * Return: Always 0 (success)
+ */
+int *Integer(va_list args, int *final)
+{
+	int num = va_arg(args, int);
+	int divisor = 1;
+
+	if (num < 0)
+	{
+		_putchar('-');
+		(*final)++;
+		num = -num;
+	}
+
+	while (num / divisor > 9)
+		divisor *= 10;
+	while (divisor != 0)
+	{
+		_putchar(num / divisor + '0');
+		(*final)++;
+		num %= divisor;
+		divisor /= 10;
+	}
+
 	return (final);
 }
