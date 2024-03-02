@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	strarray = malloc(sizeof(char) * (len + 1));
 	if (strarray == NULL)
-		return (-1)
+		return (-1);
 
 	va_start(args, format);
 
