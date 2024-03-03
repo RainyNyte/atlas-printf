@@ -130,21 +130,21 @@ int *IdentifySpecifier(char specifier, va_list args, int *final)
  */
 int *Integer(va_list args, int *final)
 {
-	int num = va_arg(args, int);
+	long num = va_arg(args, int);
 	int divisor = 1;
 	int is_min = 0;
 
 	if (num == INT_MIN)
 	{
 		is_min = 1;
-		num++;
+		num = -(long)INT_MIN;
 	}
 	
 	if (num < 0)
 	{
 		_putchar('-');
 		(*final)++;
-		num = -num;
+		num = is_min ? INT_MAX : -num;
 	}
 
 	while (num / divisor > 9)
