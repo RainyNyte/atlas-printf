@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include <limits.h>
 #include "main.h"
 
 /**
@@ -131,7 +132,14 @@ int *Integer(va_list args, int *final)
 {
 	int num = va_arg(args, int);
 	int divisor = 1;
+	int is_min = 0;
 
+	if (num == INT_MIN)
+	{
+		is_min = 1;
+		num++;
+	}
+	
 	if (num < 0)
 	{
 		_putchar('-');
@@ -141,6 +149,12 @@ int *Integer(va_list args, int *final)
 
 	while (num / divisor > 9)
 		divisor *= 10;
+	
+	if (is_min)
+	{
+		is_min = 0;
+	}
+
 	while (divisor != 0)
 	{
 		_putchar(num / divisor + '0');
