@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include <math.h>
 #include "main.h"
 
 /**
@@ -120,6 +121,7 @@ int *IdentifySpecifier(char specifier, va_list args, int *final)
 	}
 	return (final);
 }
+
 /**
  * Integer - Print an integer
  * @args: Variable argument list
@@ -130,23 +132,17 @@ int *IdentifySpecifier(char specifier, va_list args, int *final)
 int *Integer(va_list args, int *final)
 {
 	int num = va_arg(args, int);
-	int divisor = 1;
+	size_t i;
+	char *numstr;
 
-	if (num < 0)
-	{
-		_putchar('-');
-		(*final)++;
-		num = -num;
-	}
+	numstr = malloc(numDigits(num) + 1);
 
-	while (num / divisor > 9)
-		divisor *= 10;
-	while (divisor != 0)
+	int10_to_string(num, numstr);
+
+	for (i = 0; i < strlen(numstr); i++)
 	{
-		_putchar(num / divisor + '0');
-		(*final)++;
-		num %= divisor;
-		divisor /= 10;
+		_putchar(numstr[i]);
+		final++;
 	}
 
 	return (final);

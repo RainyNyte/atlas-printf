@@ -1,0 +1,71 @@
+#include "main.h"
+#include <stdarg.h>
+
+/**
+ *int10_to_string- converts an int to a string for easier handling in _printf
+ *@num- the number to be converted
+ *@str- pointer to a string that the converted number will be stored at
+ *
+ *Return: the converted string
+ */
+char *int10_to_string(int num, char *str)
+{
+	int i = 0;
+	int is_negative = 0;
+	int j;
+	char temp;
+	int digit = 0;
+
+	if (num < 0)
+	{
+		is_negative = 1;
+		num = -num;
+	}
+
+	while (num != 0)
+	{
+		digit = num % 10;
+
+		str[i++] = (digit < 10) ? digit + '0' : digit + 'A' - 10;
+		num /= 10;
+	}
+
+	if (is_negative)
+	{
+		str[i++] = '-';
+	}
+	str[i] = '\0';
+
+	for (j = 0; j < i / 2; j++)
+	{
+		temp = str[j];
+
+		str[j] = str[i -j -1];
+		str[i - j - 1] = temp;
+	}
+	return (str);
+}
+
+/**
+ *numDigits- calculate the number of digits in a number and account for
+ *the negative if a negative number is passed
+ *@num: the number to calculate the number of digits in
+ *
+ *Return: number of digits in num
+ */
+int numDigits(int num)
+{
+	int count = 0;
+
+	if (num < 0)
+	{
+		num = -num;
+		count++;
+	}
+	while (num > 0)
+	{
+		num /= 10;
+		count++;
+	}
+	return (count);
+}

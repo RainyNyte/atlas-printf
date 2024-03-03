@@ -47,6 +47,8 @@ int main(void)
 	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
 	_printf("Length:[%d, %i]\n", len, len);
 	_printf("Negative:[%d]\n", -762534);
+	_printf("%d\n", INT_MIN);
+	_printf("%d\n", INT_MAX);
 
 
 /**
