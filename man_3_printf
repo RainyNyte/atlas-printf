@@ -3,6 +3,10 @@
 .SH NAME
 _printf \- custom printf function
 
+.SH AUTHOR
+Allen Keeling - primary programmer.
+Rain Nyte - Debugging and concept.
+
 .SH SYNOPSIS
 #include <stdio.h>
 #include <stdarg.h>
